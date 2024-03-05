@@ -1,5 +1,6 @@
 package dk.via.viewmodel;
 
+import dk.via.model.Person;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import dk.via.model.Model;
@@ -14,13 +15,10 @@ public class StartViewModel{
         this.name = new SimpleStringProperty("");
         this.message = new SimpleStringProperty("");
     }
-    public void add(){
-        try{
-            if (!name.get().isEmpty() && !name.get().equals("")){
-
-            }
-        }catch (Exception e){
-            throw new RuntimeException(e.getMessage());
-        }
+    public void bindName(StringProperty name){
+        name.bindBidirectional(this.name);
+    }
+    public void bindMessage(StringProperty message){
+        message.bindBidirectional(this.message);
     }
 }
